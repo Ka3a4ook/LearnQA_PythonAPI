@@ -15,10 +15,9 @@ class TestUserAgent:
     @pytest.mark.parametrize('test_data', data)
     def test_user_agent(self, test_data):
         response = requests.get("https://playground.learnqa.ru/ajax/api/user_agent_check",
-                                headers={"User-Agent": json.dumps(test_data['user_agent'])})
-        print('\n', '"' + response.json()['platform'] + '"', '"' + response.json()['browser'] + '"',
-              '"' + response.json()['device'] + '"', '\n', json.dumps(test_data['platform']),
-              json.dumps(test_data['browser']), json.dumps(test_data['device']))
-        assert ('"' + response.json()['platform'] + '"' == json.dumps(test_data['platform']) and
-                '"' + response.json()['browser'] + '"' == json.dumps(test_data['browser']) and
-                '"' + response.json()['device'] + '"' == json.dumps(test_data['device']))
+                                headers={"User-Agent": test_data['user_agent']})
+        print('\n', response.json()['platform'], response.json()['browser'], response.json()['device'],
+              '\n', test_data['platform'], test_data['browser'], test_data['device'])
+        assert (response.json()['platform'] == test_data['platform'] and
+                response.json()['browser'] == test_data['browser'] and
+                response.json()['device'] == test_data['device'])
