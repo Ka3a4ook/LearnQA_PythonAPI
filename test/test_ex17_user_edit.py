@@ -122,7 +122,7 @@ class TestUserEdit(Basecase):
                                  cookies={"auth_sid": auth_sid}, data={"email": new_email})
         Assertions.assert_code_status(response3, 400)
         assert response3.content.decode("utf-8") == "Invalid email format", \
-            f"Unexpected response content {response2.content}"
+            f"Unexpected response content {response3.content}"
 
     def test_edit_just_created_user_with_very_short_firstname_auth(self):
         # Register
