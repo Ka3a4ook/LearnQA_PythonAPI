@@ -127,3 +127,4 @@ dmypy.json
 .pyre/
 .idea
 /logs/*
+/test_results/
